@@ -1,0 +1,113 @@
+@startuml
+actor Admin
+
+participant Sistema
+participant "Banco de Dados" as BD
+
+note over Admin: Inicia sessão
+
+activate Admin
+Admin -> Sistema: Solicita login
+activate Sistema
+Sistema -> BD: Verifica credenciais
+activate BD
+BD --> Sistema: Credenciais válidas
+deactivate BD
+Sistema --> Admin: Exibe interface do sistema
+deactivate Sistema
+
+note over Admin: Visualiza lista de lições
+
+activate Admin
+Admin -> Sistema: Solicita visualização da lista de lições
+activate Sistema
+Sistema -> BD: Consulta lista de lições
+activate BD
+BD --> Sistema: Lista de lições
+deactivate BD
+Sistema --> Admin: Exibe lista de lições
+deactivate Sistema
+
+note over Admin: Seleciona uma lição
+
+activate Admin
+Admin -> Sistema: Seleciona uma lição para editar/remover
+activate Sistema
+Sistema -> BD: Consulta dados da lição selecionada
+activate BD
+BD --> Sistema: Dados da lição selecionada
+deactivate BD
+Sistema --> Admin: Exibe dados da lição selecionada
+deactivate Sistema
+
+note over Admin: Atualiza dados da lição
+
+activate Admin
+Admin -> Sistema: Atualiza dados da lição
+Sistema -> BD: Atualiza dados da lição
+activate BD
+BD --> Sistema: Dados da lição atualizados
+deactivate BD
+Sistema --> Admin: Confirmação de dados da lição atualizados
+deactivate Sistema
+
+note over Admin: Gerencia usuários
+
+activate Admin
+Admin -> Sistema: Solicita visualização da lista de usuários
+activate Sistema
+Sistema -> BD: Consulta lista de usuários
+activate BD
+BD --> Sistema: Lista de usuários
+deactivate BD
+Sistema --> Admin: Exibe lista de usuários
+Admin -> Sistema: Seleciona usuário para editar/remover
+Sistema -> BD: Consulta dados do usuário selecionado
+activate BD
+BD --> Sistema: Dados do usuário selecionado
+deactivate BD
+Sistema --> Admin: Exibe dados do usuário selecionado
+Admin -> Sistema: Atualiza dados do usuário
+Sistema -> BD: Atualiza dados do usuário
+activate BD
+BD --> Sistema: Dados do usuário atualizados
+deactivate BD
+Sistema --> Admin: Confirmação de dados do usuário atualizados
+Admin -> Sistema: Encerra conta de usuário
+Sistema -> BD: Remove dados do usuário
+activate BD
+BD --> Sistema: Conta de usuário encerrada
+deactivate BD
+Sistema --> Admin: Confirmação de conta encerrada
+deactivate Sistema
+
+note over Admin: Consulta feedbacks dos usuários
+
+activate Admin
+Admin -> Sistema: Consulta feedbacks dos usuários
+Sistema -> BD: Consulta feedbacks
+activate BD
+BD --> Sistema: Lista de feedbacks
+deactivate BD
+Sistema --> Admin: Exibe feedbacks dos usuários
+deactivate Sistema
+
+note over Admin: Visualiza e atualiza perfil
+
+activate Admin
+Admin -> Sistema: Solicita visualização e atualização do perfil
+Sistema -> BD: Consulta perfil do administrador
+activate BD
+BD --> Sistema: Perfil do administrador
+deactivate BD
+Sistema --> Admin: Exibe perfil do administrador
+Admin -> Sistema: Atualiza perfil do administrador
+Sistema -> BD: Atualiza perfil do administrador
+activate BD
+BD --> Sistema: Perfil atualizado
+deactivate BD
+Sistema --> Admin: Confirmação de perfil atualizado
+deactivate Sistema
+
+deactivate Admin
+@enduml

@@ -1,0 +1,114 @@
+@startuml
+actor Usuario
+
+participant Sistema
+participant "Banco de Dados" as BD
+
+note over Usuario: Inicia sessão
+
+activate Usuario
+Usuario -> Sistema: Solicita login
+activate Sistema
+Sistema -> BD: Verifica credenciais
+activate BD
+BD --> Sistema: Credenciais válidas
+deactivate BD
+Sistema --> Usuario: Exibe interface do sistema
+deactivate Sistema
+
+note over Usuario: Visualiza lista de lições
+
+activate Usuario
+Usuario -> Sistema: Solicita visualização da lista de lições
+activate Sistema
+Sistema -> BD: Consulta lista de lições
+activate BD
+BD --> Sistema: Lista de lições
+deactivate BD
+Sistema --> Usuario: Exibe lista de lições
+deactivate Sistema
+
+note over Usuario: Seleciona uma lição
+
+activate Usuario
+Usuario -> Sistema: Seleciona uma lição para resolver exercícios
+activate Sistema
+Sistema -> BD: Consulta exercícios da lição selecionada
+activate BD
+BD --> Sistema: Exercícios da lição
+deactivate BD
+Sistema --> Usuario: Exibe exercícios da lição
+deactivate Sistema
+
+note over Usuario: Resolve exercícios
+
+loop Resolução de exercícios
+    activate Usuario
+    Usuario -> Sistema: Resolve um exercício
+    activate Sistema
+    Sistema -> BD: Verifica resposta do exercício
+    activate BD
+    BD --> Sistema: Resposta correta?
+    deactivate BD
+    Sistema --> Usuario: Feedback sobre a resposta
+    Usuario -> Sistema: Solicita pontuação do exercício
+    Sistema -> BD: Consulta pontuação do exercício
+    activate BD
+    BD --> Sistema: Pontuação do exercício
+    deactivate BD
+    Sistema --> Usuario: Exibe pontuação do exercício
+    Usuario -> Sistema: Deseja enviar feedback/report?
+    Sistema -> Usuario: Exibe opção para enviar feedback/report
+    Usuario -> Sistema: Decide enviar ou não
+    alt Usuario decide enviar
+        Usuario -> Sistema: Solicita opções de feedback/report
+        Sistema -> BD: Opções de feedback/report
+        activate BD
+        BD --> Sistema: Opções de feedback/report
+        deactivate BD
+        Sistema -> Usuario: Exibe opções de feedback/report
+        Usuario -> Sistema: Seleciona opção de feedback/report
+        Sistema -> BD: Registra feedback/report do usuário
+        activate BD
+        BD --> Sistema: Feedback/report registrado
+        deactivate BD
+        Sistema --> Usuario: Confirmação de feedback/report registrado
+    else Usuario decide não enviar
+        Usuario -> Sistema: Não deseja enviar feedback/report
+        Sistema --> Usuario: Confirmação de não envio de feedback/report
+    end
+    deactivate Sistema
+end
+
+note over Usuario: Finaliza todos os exercícios
+
+activate Usuario
+Usuario -> Sistema: Todos os exercícios resolvidos
+activate Sistema
+Sistema -> BD: Atualiza status da lição
+activate BD
+BD --> Sistema: Lição concluída
+deactivate BD
+Sistema --> Usuario: Desbloqueia próxima lição
+deactivate Sistema
+
+note over Usuario: Visualiza e atualiza perfil
+
+activate Usuario
+Usuario -> Sistema: Solicita visualização e atualização do perfil
+activate Sistema
+Sistema -> BD: Consulta perfil do usuário
+activate BD
+BD --> Sistema: Perfil do usuário
+deactivate BD
+Sistema --> Usuario: Exibe perfil do usuário
+Usuario -> Sistema: Solicita atualização do perfil
+Sistema -> BD: Atualiza perfil do usuário
+activate BD
+BD --> Sistema: Perfil atualizado
+deactivate BD
+Sistema --> Usuario: Confirmação de perfil atualizado
+deactivate Sistema
+
+deactivate Usuario
+@enduml
