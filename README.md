@@ -2,7 +2,7 @@
 
 <br>
 
-[CodeCraft](preview.png)
+![CodeCraft](preview.png)
 
 
 **Bem-vindo ao CodeCraft**, a plataforma de aprendizado online desenhada para transformar aspirantes em programadores habilidosos no universo do desenvolvimento web. Com cursos interativos em HTML, CSS e JavaScript, o CodeCraft é o seu aliado na conquista da fluência tecnológica.
