@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+actor "Usuário" as Usuario
+
+rectangle "Caso de Uso - Usuário" {
+    usecase (Logar no Sistema) as LogarUsuario
+    usecase (Realizar Cadastro) as CadastroUsuario
+    usecase (Gerenciar Perfil) as GerenciarPerfilUsuario
+    usecase (Visualizar Lista de Lições) as VisualizarListaLicoesUsuario
+    usecase (Concluir Lição) as ConcluirLicaoUsuario
+    usecase (Dar Feedback) as DarFeedbackUsuario
+}
+
+Usuario --> (LogarUsuario)
+Usuario --> (CadastroUsuario)
+Usuario --> (GerenciarPerfilUsuario)
+Usuario --> (VisualizarListaLicoesUsuario)
+Usuario --> (ConcluirLicaoUsuario)
+Usuario --> (DarFeedbackUsuario)
+
+(GerenciarPerfilUsuario) --> (Visualizar Perfil)
+(GerenciarPerfilUsuario) --> (Atualizar Perfil)
+
+(VisualizarListaLicoesUsuario) --> (Incluir Lição)
+(VisualizarListaLicoesUsuario) --> (Editar Lição)
+(VisualizarListaLicoesUsuario) --> (Remover Lição)
+@enduml

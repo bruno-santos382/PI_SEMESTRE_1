@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+
+actor "Administrador" as Administrador
+
+rectangle "Caso de Uso - Administrador" {
+    usecase (Logar no Sistema) as LogarAdministrador
+    usecase (Gerenciar Perfil) as GerenciarPerfilAdministrador
+    usecase (Gerenciar Lições) as GerenciarLicoesAdministrador
+    usecase (Gerenciar Usuários) as GerenciarUsuariosAdministrador
+}
+
+Administrador --> (LogarAdministrador)
+Administrador --> (GerenciarPerfilAdministrador)
+Administrador --> (GerenciarLicoesAdministrador)
+Administrador --> (GerenciarUsuariosAdministrador)
+
+(GerenciarUsuariosAdministrador) --> (EncerrarConta)
+
+
+(GerenciarPerfilAdministrador) --> (Visualizar Perfil)
+(GerenciarPerfilAdministrador) --> (Atualizar Perfil)
+
+(GerenciarLicoesAdministrador) --> (Incluir Lição)
+(GerenciarLicoesAdministrador) --> (Editar Lição)
+(GerenciarLicoesAdministrador) --> (Remover Lição)
+
+ (GerenciarUsuariosAdministrador) -->(AtualizarConta) 
+
+@enduml
