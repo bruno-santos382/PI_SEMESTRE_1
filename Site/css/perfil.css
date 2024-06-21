@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap');
+
 body {
-    background-color: #f7f7f7;
+    background-color: #131F24;
+    font-family: "Jolly Lodger", system-ui;
+    font-weight: 400;
+    font-style: normal;
     margin-top: 20px;
+    padding: 0;
 }
-.main-body {
+
+.main-body {    
     padding: 15px;
 }
 .card {
+    background: #DCD383;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 10px;
@@ -22,7 +30,7 @@ body {
     margin-top: 10px;
 }
 .breadcrumb {
-    background-color: #f7f7f7;
+    background: #131F24;
     margin-bottom: 20px;
 }
 .breadcrumb-item + .breadcrumb-item::before {
@@ -32,6 +40,7 @@ body {
     border-radius: 5px;
 }
 .list-group-item {
+    background: #DCD383;
     border: none;
     padding: 10px 15px;
 }
@@ -44,4 +53,62 @@ body {
 }
 .container{
     margin-top: -45px;
+}
+footer {
+    background-color: #131F24;
+    color: #ffffff;
+    padding: 40px 0;
+    text-align: left;
+    font-size: 14px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 0 20px;
+    min-width: 200px;
+}
+
+.footer-section h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section p, .footer-section ul, .footer-section li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.8;
+}
+
+.footer-section a {
+    color: #49C0F8;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #ffffff;
+    padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-section {
+        margin-bottom: 20px;
+    }
 }
